@@ -2,14 +2,7 @@ import React, {Component} from 'react';
 import './skill.css';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 
-//
 export class Skill extends Component {
-
-  // constructor() {
-  //   this.state = {
-
-  //   }
-  // }
 
   render() {
     return (
