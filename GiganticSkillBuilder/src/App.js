@@ -9,7 +9,7 @@ import { createStore } from 'redux';
 
 //function getSkills(state)
 const skills = [
-  { name: "Thunderbolt", description: "Cool"},
+  { name: "Thunderbolts", description: "Cool"},
   { name: "Fireball", description: "Hot"}
 ]
 
