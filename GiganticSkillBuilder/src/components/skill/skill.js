@@ -6,7 +6,8 @@ export class Skill extends Component {
 
   render() {
     return (
-      <Row>
+      <Row center="sm">
+          
          <div>{this.props.name}</div>
          <div>{this.props.description}</div>
       </Row>
