@@ -1,6 +1,6 @@
 const GIGANTIC_TEST_DATA_FILE = {
     heroes: [
-        { id: 1, name: "Tyto", description: "description", imageUrl: "imageUrl"},
+        { id: "4aa34d14-b943-4ee3-ad1e-0e3602f4855e", name: "Tyto", description: "description", imageUrl: "imageUrl"},
     ],
     entities: {
         heroes: {

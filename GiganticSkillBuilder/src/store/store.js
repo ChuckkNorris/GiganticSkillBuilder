@@ -53,7 +53,9 @@ export const loadState = () => {
         if (serializedState === null) {
             return undefined;
         }
-        return JSON.parse(serializedState);
+        let toReturn = JSON.parse(serializedState);
+        console.log(toReturn);
+        return toReturn;
     }
     catch (err) {
         return undefined;
@@ -96,14 +98,12 @@ const AddHeroItem = ({dispatch}) => {
     let input;
     let myRef = {};
     let handleInputRef = (ref) => {
-        console.log(ref.inputRef);
         myRef = ref;
         //this.state.inputRef = ref;
     };
 
     let addMyHero = (event) => {
         let name = myRef.inputRef.value;
-        console.log(name);
         store.dispatch(addHero(name));
     };
 
