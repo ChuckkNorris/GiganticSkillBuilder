@@ -4,7 +4,9 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react'
 import {Button, Input} from 'semantic-ui-react';
-
+import {v4} from 'node-uuid';
+// let uuid = require('node-uuid');
+// uuid.v4();
 const initialState = GIGANTIC_TEST_DATA;
 
 // export const addHero = name => {     return {         type:     } } ACTIONS
@@ -13,7 +15,7 @@ let nextHeroId = 2;
 export function addHero(name) {
     return {
         type: ADD_HERO,
-        id: nextHeroId++,
+        id: v4(), //nextHeroId++,
         name
     };
 }
@@ -43,8 +45,38 @@ export function heroReducer(state = initialState, action) {
     }
 }
 
+
+// Persisted State
+export const loadState = () => {
+    try {
+        const serializedState = localStorage.getItem('state');
+        if (serializedState === null) {
+            return undefined;
+        }
+        return JSON.parse(serializedState);
+    }
+    catch (err) {
+        return undefined;
+    }
+}
+
+export const saveState = (state) => {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem('state', serializedState);
+    }
+    catch (err) {
+        return undefined;
+    }
+}
+
 // STORE
-export let store = createStore(heroReducer);
+export let store = createStore(heroReducer, loadState());
+
+store.subscribe(() => {
+    saveState(store.getState());
+})
+
 
 // Container
 const getAllHeroes = (heroes) => {
@@ -122,7 +154,7 @@ const HeroList = ({heroes}) => {
 
 HeroList.propTypes = {
     heroes: PropTypes
-        .arrayOf(PropTypes.shape({id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}).isRequired)
+        .arrayOf(PropTypes.shape({id: PropTypes.string.isRequired, name: PropTypes.string.isRequired}).isRequired)
         .isRequired
         //onTodoClick: PropTypes.func.isRequired
 }
