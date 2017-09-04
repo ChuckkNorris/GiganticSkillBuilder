@@ -9,13 +9,13 @@ import {v4} from 'node-uuid';
 // uuid.v4();
 const initialState = GIGANTIC_TEST_DATA;
 
-// export const addHero = name => {     return {         type:     } } ACTIONS
+
 const ADD_HERO = 'ADD_HERO';
 let nextHeroId = 2;
 export function addHero(name) {
     return {
         type: ADD_HERO,
-        id: v4(), //nextHeroId++,
+        id: v4(), 
         name
     };
 }
@@ -127,28 +127,13 @@ const HeroList = ({heroes}) => {
           
         );
     }
-
-    // for (let heroId of Object.getOwnPropertyNames(heroes)) {
-    //     let hero = heroes[heroId];
-    //     console.log(hero);
-    //     theHeroes.push(
-    //         <li key={hero.id}>
-    //             {hero.name}
-    //         </li>
-          
-    //     );
-    // }
     return (
         <div>
             <p>Hero List</p>
             <ul>
             {theHeroes}
             </ul>
-            
         </div>
-        
-    // <ul>   {heroList.map(hero => (       // {...todo}  onClick={() =>
-    // onTodoClick(todo.id)}     <p key={hero.id}  >{hero.name}</p>   ))} </ul>
     )
 };
 
