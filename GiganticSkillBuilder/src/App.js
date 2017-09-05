@@ -6,19 +6,12 @@ import {Grid, Row, Col} from 'react-flexbox-grid';
 import {Portrait} from './components/portrait/portrait.js';
 import {Skill} from './components/skill/skill';
 import {createStore} from 'redux';
-import {HeroList} from './components/hero-list/hero-list'
+import HeroList from './store/hero/hero-list.component'
+//import {HeroList} from './components/hero-list/hero-list'
 import {ButtonExampleButton} from './controls/button.js'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
-
-const skills = [
-  {
-    name: "Thunderbolts",
-    description: "Cool"
-  }, {
-    name: "Fireball",
-    description: "Hot"
-  }
-]
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import AddHero from './store/hero/add-hero.component';
+import HeroSkillTree from './store/hero/hero-skill-tree.component'
 
 class App extends Component {
 
@@ -34,40 +27,36 @@ class App extends Component {
     console.log(this.state);
   }
 
-  getSkills() {
-    let renderedSkills = [];
-    for (let skill of skills) {
-      renderedSkills.push(
-        <Skill key={skill.name} name={skill.name} description={skill.description}></Skill>
-      )
-    }
-    return (
-      <Grid>
-        {renderedSkills}
-      </Grid>
-    );
-  }
-
   render() {
     return (
       <Router>
         <Grid>
           <Row>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/heroes">Heroes</Link></li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/heroes">Heroes</Link>
+              </li>
             </ul>
-            <Route exact path="/" component={ButtonExampleButton} />
-            <Route path="/heroes" component={HeroList} />
-            <HeroList></HeroList>
-            <ButtonExampleButton></ButtonExampleButton>
 
+            {/* <HeroList></HeroList>
+            <ButtonExampleButton></ButtonExampleButton> */}
+
+          </Row>
+          <Row>
+          <AddHero></AddHero>
           </Row>
 
           <Row>
+          <Route exact path="/" component={ButtonExampleButton}/>
+            <Route path="/heroes" component={HeroList}/>
+           
+          
             <Grid>
               <Col xs={12} md={12}>
-                {this.getSkills()}
+                <HeroSkillTree></HeroSkillTree>
               </Col>
               <Col></Col>
 

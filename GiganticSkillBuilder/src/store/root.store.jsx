@@ -1,4 +1,5 @@
-import RootReducer from './root.reducer'
+import GiganticApp from './root.reducer'
+import { createStore } from 'redux';
 
 // Persisted State
 export const loadState = () => {
@@ -27,8 +28,10 @@ export const saveState = (state) => {
 }
 
 // STORE
-export let store = createStore(RootReducer, loadState());
+let store = createStore(GiganticApp, loadState());
 
 store.subscribe(() => {
     saveState(store.getState());
 })
+
+export default store;

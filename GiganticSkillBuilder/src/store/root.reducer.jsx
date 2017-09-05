@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux'
 
-import heroReducer from './hero/hero-reducer';
+import heroes from './hero/hero.reducer';
 
 //combine()
 
 const giganticApp = combineReducers({
-    heroReducer
+    heroes
 });
 
 export default giganticApp;

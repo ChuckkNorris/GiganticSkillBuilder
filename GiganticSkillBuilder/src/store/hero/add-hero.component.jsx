@@ -1,6 +1,10 @@
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Button, Input, Form} from 'semantic-ui-react';
+import {addHero} from './hero.actions'
 const AddHeroItem = ({dispatch}) => {
-    let input;
+    let heroName;
+    let heroUrl;
     let myRef = {};
     let handleInputRef = (ref) => {
         myRef = ref;
@@ -9,15 +13,26 @@ const AddHeroItem = ({dispatch}) => {
 
     let addMyHero = (event) => {
         let name = myRef.inputRef.value;
-        store.dispatch(addHero(name));
+        dispatch(addHero(name));
+    };
+
+    let formAddTest = (event) => {
+        event.preventDefault();
+       console.log(heroName.value);
+       console.log(heroUrl.value);
     };
 
     return (
-        <div>
-            <Input ref={handleInputRef} placeholder="Hero Name"></Input>
-            <Button onClick={addMyHero}>Add Hero</Button>
-        </div>
+        <Form onSubmit={formAddTest}>
+            <input ref={node => {heroName = node}} name="name" placeholder="Hero Name"/>
+            <input ref={node => {heroUrl = node}} name="url" placeholder="Hero Picture URL"/>
+            <Button type="submit">Add Hero</Button>
+        </Form>
+        // <div>
+        //     <Input ref={handleInputRef} placeholder="Hero Name"></Input>
+        //     <Button onClick={addMyHero}>Add Hero</Button>
+        // </div>
 
     );
 }
-export const AddHero = connect()(AddHeroItem);
+export default connect()(AddHeroItem);
