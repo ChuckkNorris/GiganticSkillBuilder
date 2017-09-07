@@ -4,7 +4,6 @@ import INITIAL_GIGANTIC_STATE from '../gigantic-test-data-file'
 
 const heroPage = function(state = {}, action) {
     let toReturn = state;
-    console.log('Hero Page...')
     switch (action.type) {
         case SELECT_HERO:
             toReturn = Object.assign({}, state, {
@@ -12,7 +11,6 @@ const heroPage = function(state = {}, action) {
             });
             break;
     }
-    console.log(toReturn)
     return toReturn;
 }
 
