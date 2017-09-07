@@ -1,39 +1,56 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import store from '../root.store'
-const skills = [
-    {
-      name: "Thunderbolts",
-      description: "Cool"
-    }, {
-      name: "Fireball",
-      description: "Hot"
+
+class HeroSkillTree extends Component {
+    constructor() {
+        super();
+        this.state = {
+            selectedHeroId: 'Coolio Man'
+        };
+        this.updateHeroData();
     }
-  ];   
 
-const HeroSkillTree = (state) => {
-    store.subscribe(() => {
-        let newSelectedHero = store.getState().heroes.selectedHeroId;
-        console.log(store.getState());
-        console.log('From skill tree: ' + newSelectedHero);
-    })
-    // getSkills() {
-    //     let renderedSkills = [];
-    //     for (let skill of skills) {
-    //       renderedSkills.push(
-    //         <Skill key={skill.name} name={skill.name} description={skill.description}></Skill>
-    //       )
-    //     }
-    //     return (
-    //       <Grid>
-    //         {renderedSkills}
-    //       </Grid>
-    //     );
-    //   }
+    updateHeroData() {
+        store.subscribe(() => {
+            let heroPageStore = store.getState().heroPage;
+            if (heroPageStore) {
+                let selectedHeroId = heroPageStore.selectedHeroId;
+                console.log(selectedHeroId)
+                this.setState({selectedHeroId: selectedHeroId});
+            }
 
-    return (
-        <div>
-            My Hero
-        </div>
-    )
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                My Hero Skill Tree
+            {this.state.selectedHeroId}
+            </div>
+        )
+    }
 }
+// const HeroSkillTree = (state) => {
+//     console.log(state);
+//     state.selectedHeroId = 'abc';
+//     store.subscribe(() => {
+//         let heroPageStore = store.getState().heroPage;
+//        if (heroPageStore) {
+//         let selectedHeroId = heroPageStore.selectedHeroId;
+//         console.log(selectedHeroId)
+//         state.selectedHeroId = selectedHeroId;
+//        }
+
+//     })
+//     return (
+//         <div>
+//             My Hero
+//             {state.selectedHeroId}
+//         </div>
+//     )
+
+// }
+
+
 export default HeroSkillTree;

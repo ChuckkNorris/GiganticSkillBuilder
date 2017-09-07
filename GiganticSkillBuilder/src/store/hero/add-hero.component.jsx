@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button, Input, Form} from 'semantic-ui-react';
-import {addHero} from './hero.actions'
+import {addHero, selectHero} from './hero.actions';
+
+
 const AddHeroItem = ({dispatch}) => {
     let heroName;
     let heroUrl;
@@ -20,6 +22,7 @@ const AddHeroItem = ({dispatch}) => {
         event.preventDefault();
        console.log(heroName.value);
        console.log(heroUrl.value);
+       //dispatch(selectHero())
     };
 
     return (

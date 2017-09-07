@@ -27,8 +27,8 @@ export const saveState = (state) => {
     }
 }
 
-// STORE
-let store = createStore(GiganticApp, loadState());
+// STORE loadState()
+let store = createStore(GiganticApp);
 
 store.subscribe(() => {
     saveState(store.getState());

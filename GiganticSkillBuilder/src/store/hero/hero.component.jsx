@@ -11,7 +11,7 @@ export const Hero = (props) => {
         <Button onClick={props.onClick} primary>
             <Grid fluid>
                 <Row>
-                    <img src={props.url}/>
+                    <img src={props.imageUrl}/>
                 </Row>
                 <Row center="xs">
                     <h1>{props.name}</h1>

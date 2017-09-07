@@ -1,6 +1,6 @@
 const GIGANTIC_TEST_DATA_FILE = {
     heroes: [
-        { id: "4aa34d14-b943-4ee3-ad1e-0e3602f4855e", name: "Tyto", description: "description", imageUrl: "imageUrl"},
+        { id: "4aa34d14-b943-4ee3-ad1e-0e3602f4855e", name: "Tyto", description: "description", imageUrl: "https://gigantic.gamepedia.com/media/gigantic.gamepedia.com/6/63/Tyto_nav.PNG?version=c20a2666f219e1c35c9db66aecef6d85"},
     ],
     entities: {
         heroes: {

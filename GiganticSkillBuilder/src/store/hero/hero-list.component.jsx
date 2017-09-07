@@ -6,19 +6,15 @@ import {selectHero} from './hero.actions.js';
 
 
 const HeroList = ({heroes, onHeroClick}) => {
-    console.log(heroes);
-
-    // let selectHero = function(selectedHeroId) {
-    //     console.log(selectedHeroId);
-    // }
+    console.log('From heroes');
 
     let theHeroes = [];
     console.log(heroes);
-    if (heroes.heroes)
-    theHeroes = heroes.heroes.map(hero => (
+    if (heroes)
+        theHeroes = heroes.map(hero => (
         <Hero key={hero.id} {...hero} onClick={() => onHeroClick(hero.id)}></Hero>
-        // <li key={hero.id}>My name is {hero.name}</li>
     ));
+    console.log(theHeroes)
     return (
         <div>
             <p>Hero List</p>
